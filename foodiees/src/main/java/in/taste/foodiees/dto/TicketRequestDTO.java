@@ -1,5 +1,6 @@
 package in.taste.foodiees.dto;
 
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RequestDTO {
+public class TicketRequestDTO {
+    @Email
     private String email;
     private String issue;
 }

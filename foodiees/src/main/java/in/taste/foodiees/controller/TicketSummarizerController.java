@@ -1,7 +1,9 @@
 package in.taste.foodiees.controller;
 
-import in.taste.foodiees.dto.RequestDTO;
+import in.taste.foodiees.dto.TicketRequestDTO;
+import in.taste.foodiees.dto.TicketResponseDTO;
 import in.taste.foodiees.service.TicketSummarizerService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,8 +22,8 @@ public class TicketSummarizerController {
     }
 
     @PostMapping("/summarize")
-    public String summarize(@RequestBody RequestDTO requestDTO) {
-        String result = ticketSummarizerService.summarize(requestDTO.getEmail(), requestDTO.getIssue());
+    public TicketResponseDTO summarize(@Valid @RequestBody TicketRequestDTO ticketRequestDTO) {
+        TicketResponseDTO result = ticketSummarizerService.summarize(ticketRequestDTO.getEmail(), ticketRequestDTO.getIssue());
         return result;
     }
 }
